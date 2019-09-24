@@ -183,23 +183,22 @@ class LinkedList:
         if not isinstance(index, int):  # Checks if index is int.
             raise ValueError(f"Index must be <class 'int'>, and got {type(index)} instead.")
         new_item = Node(value)
-        for enum, i in enumerate(self.__objects()):  # Going trough the list objects.
-            if enum == index:  # Got to the index given.
-                if i is self.root:  # If the index is root.
-                    i.set_previous(new_item)
-                    new_item.set_next(i)
-                    self.root = new_item
-                    break
-                else:  # If the index is not the first nor the last.
+        if index == 0:  # Item is root.
+            new_item.set_next(self.root)
+            self.root.set_previous(new_item)
+            self.root = new_item
+        elif index >= len(self):  # Item is the last item.
+            last_item = self.last_item()
+            last_item.set_next(new_item)
+            new_item.set_previous(last_item)
+        else:  # Item is not the first nor the last.
+            for enum, i in enumerate(self.__objects()):  # Going trough the list objects.
+                if enum == index:  # Got to the index given.
                     i.previous_obj.set_next(new_item)
                     i.set_previous(new_item)
                     new_item.set_previous(i.previous_obj)
                     new_item.set_next(i)
                     break
-        else:  # If the index is the last.
-            last_item = self.last_item()
-            last_item.set_next(new_item)
-            new_item.set_previous(last_item)
 
     def pop(self, index=-1):  # real signature unknown
         """
