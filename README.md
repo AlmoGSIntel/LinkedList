@@ -11,5 +11,5 @@ link_list_object = LinkedList(item1, item2, item3, item4,....)
 or like so:                                                                                                                               
 link_list_object = LinkedList(i for i in iterator)                                                                                         
 
-I wish you to enjoy my Library.
+I wish you to enjoy my Library.                                                                                                           
 Have a greate programming day.
