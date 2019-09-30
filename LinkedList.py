@@ -1,3 +1,5 @@
+"""Author  : Almog Surizon"""
+
 from ListObject import Node
 import types
 
